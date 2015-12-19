@@ -14,8 +14,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var datos: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.isbn.delegate = self;
-        isbn.becomeFirstResponder()
+        isbn.delegate = self;
+        //isbn.becomeFirstResponder()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -51,7 +51,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
  
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        isbn.resignFirstResponder()
         
         
         
@@ -73,7 +72,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 self.datos.text = ""
                 
                 
-                let alerta = UIAlertController(title: "Advertencia", message: error?.localizedDescription, preferredStyle: .Alert)
+                let alerta = UIAlertController(title: "Advertencia", message:  "No hay conexión a internet, Intente de nuevo más tarde", preferredStyle: .Alert)
                 let defaultAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
                 alerta.addAction(defaultAction)
                 self.presentViewController(alerta, animated: true, completion: nil)
@@ -93,7 +92,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         
         dataTask.resume()
-        return false
+        
+        isbn.resignFirstResponder()
+
+        return true
     }
     
     
