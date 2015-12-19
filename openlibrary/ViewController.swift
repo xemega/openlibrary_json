@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         isbn.delegate = self;
-        //isbn.becomeFirstResponder()
+        isbn.becomeFirstResponder()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
